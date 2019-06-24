@@ -19,7 +19,6 @@
   "homepage": "https://github.com/phillip0150/LIRI#readme",
   "dependencies": {
     "axios": "^0.19.0",
-    "axois": "^1.0.0",
     "dotenv": "^8.0.0",
     "moment": "^2.24.0",
     "node-spotify-api": "^1.1.1"

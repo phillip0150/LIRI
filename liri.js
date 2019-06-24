@@ -10,6 +10,7 @@ var userInput = process.argv[2];
 
 
 if (userInput === "spotify-this-song"){
+    var song = "";
     for (var i = 2; i < process.argv.length; i++) {
         song += process.argv[i] + " ";
     }
@@ -35,16 +36,22 @@ if (userInput === "concert-this"){
 // Name of the venue
 // Venue location
 // Date of the Event (use moment to format this as "MM/DD/YYYY")
-
-    for (var i = 2; i < process.argv.length; i++) {
-        artist += process.argv[i] + " ";
-    }
+    var artist = process.argv.slice(3).join(" ");
 
     // Then run a request with axios to the OMDB API with the movie specified
     var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
     axios.get(queryUrl).then(
         function(response) {
-            console.log("response");
+            console.log(response.data);
+            for (var i =0; i< response.data.length; i++)
+            {
+            console.log("------------------------------");
+            console.log(`Artist: ${artist}`);
+            console.log(`Venue Name: ${response.data[i].venue.name}`);
+            console.log(`Venue Location: ${response.data[i].venue.city}, ${response.data[i].venue.country}`);
+            console.log(`Date of Event: ${response.data[i].datetime}`);
+            console.log("------------------------------");
+         }
         })
         .catch(function(error) {
           if (error.response) {
@@ -69,9 +76,11 @@ if (userInput === "concert-this"){
 }
 
 if (userInput === "movie-this"){
-    for (var i = 2; i < process.argv.length; i++) {
+    var movieName = "";
+    for (var i = 3; i < process.argv.length; i++) {
         movieName += process.argv[i] + " ";
     }
+  
     // Then run a request with axios to the OMDB API with the movie specified
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 //     * Title of the movie.
@@ -82,6 +91,7 @@ if (userInput === "movie-this"){
 //   * Language of the movie.
 //   * Plot of the movie.
 //   * Actors in the movie.
+
 axios.get(queryUrl).then(
     function(response) {
         console.log("------------------------------");
@@ -89,7 +99,7 @@ axios.get(queryUrl).then(
         console.log(`Released: ${response.data.Released}`);
         console.log(`IMDB Rating: ${response.data.imdbRating}`);
         console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);
-        console.log(`Country where it was produced: " + ${response.data.Country}`);
+        console.log(`Country where it was produced: ${response.data.Country}`);
         console.log(`Plot: ${response.data.Plot}`);
         console.log(`Actors: ${response.data.Actors}`);
         console.log("------------------------------");
