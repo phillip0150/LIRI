@@ -18,18 +18,12 @@ LIRI was written with `javascript`, `node.js`, `axios`, `node-spotify-api`, `mom
 
 ## How to use
 
+To run the program, you need to open your terminal and enter the follow command:
+
 ```bash
-  node liri.js <command><argument>
+  node liri.js
 ```
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/1.png?raw=true)
 
+From there you are presented with a list of commands that the program can do
 
-I think you should use an
-`<addr>` element here instead.
-
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
-```
