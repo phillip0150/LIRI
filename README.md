@@ -18,14 +18,14 @@ LIRI was written with `javascript`, `node.js`, `axios`, `node-spotify-api`, `mom
 
 ## How to use
 
-To run the program, you need to open your terminal and enter the follow command:
+To run the program, you need to open your computer's terminal and enter the follow command:
 
 ```bash
   node liri.js
 ```
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/1.png?raw=true)
 
-From there you are presented with a list of commands that the program can do.
+From there, you are presented with a list of commands that the program can do.
 
 ### Searching a song
 
@@ -35,8 +35,16 @@ To search a song, type `spotify-this-song` with a song name. For example:
 ```
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/2.png?raw=true)
 
-From there you are presented with a list that matches the search. The list will contain a `Artist`, `Song name`, `Link`, and a `Album`. Hovering over `Link` and using the following shortcut `cmd + mouse click`, will take you to spotify song page.
+Once you enter a search, you are presented with a list. The list will contain a `Artist`, `Song name`, `Link`, and a `Album`. Hovering over `Link` and using the following shortcut `cmd + mouse click`, will take you to spotify song page.
 
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/3.png?raw=true)
 
 ### Searching a concert
+
+To search a concert, type `concert-this` with a artist. For example:
+```bash
+  node liri.js concert-this Lil Pump
+```
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/4.png?raw=true)
+
+Once you enter a search, you are presented with a list. The list will contain the `Artist`, `Venue Name`, `Venue Location`, and the `Date of Event`.
