@@ -12,6 +12,8 @@ If you haven't written a markdown file yet, click here for a rundown, or just ta
 
 
 
-Ever wish you could type to siri? Well now you can with LIRI. LIRI is a *Language Interpretation and Recognition Interface*. What LIRI can do is give you search results based on a command. LIRI can 
-> search spotify songs, search events that an artist is performing at, search for a movie, and finally answering commands in a text file. 
+Ever wish you could type to siri? Well now you can with LIRI. LIRI is a *Language Interpretation and Recognition Interface*. What LIRI can do is give you search results based on a command. LIRI can search spotify songs, search events that an artist is performing at, search for a movie, and finally answering commands in a text file. 
 
+
+I think you should use an
+`<addr>` element here instead.
