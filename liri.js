@@ -19,6 +19,7 @@ function spotifySearch(song){
             return console.log('Error occurred: ' + err);
         }
         for (var i = 0; i<  data.tracks.items.length; i++){
+            console.log("-------------------------");
             console.log("Artist: " + data.tracks.items[i].artists[0].name);
             console.log("Song name: " + data.tracks.items[i].name);
             console.log("Link: " + data.tracks.items[i].external_urls.spotify);
@@ -146,6 +147,7 @@ function doWhat(){
       
       });
 }
+
 switch (userInput) {
     case "spotify-this-song":
         spotifySearch(process.argv.slice(3).join(" ")); 
@@ -160,6 +162,8 @@ switch (userInput) {
         doWhat();
         break;
     default:
-        console.log("Please use spotify-this-song <arugment>, to search a song\nPlease use concert-this <argument>, to search a concert\nPlease use moive-this <argument>, to search a movie\nPlease use do-what-it-says to use a text file to search for you.")
+        console.log("-------------------------");
+        console.log("Please use spotify-this-song <input>, to search a song\nPlease use concert-this <input>, to search a concert\nPlease use moive-this <input>, to search a movie\nPlease use do-what-it-says to use a text file to search for you.")
+        console.log("-------------------------");
 }
        
