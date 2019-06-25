@@ -89,7 +89,7 @@ function movie(movieName) {
             console.log(`IMDB Rating: ${response.data.imdbRating}`);//* IMDB Rating of the movie.
             console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);//* Rotten Tomatoes Rating of the movie.
             console.log(`Country where it was produced: ${response.data.Country}`);//* Country where the movie was produced.
-            //* Language of the movie.
+            console.log(`Movie language: ${response.data.Language}`);//* Language of the movie.
             console.log(`Plot: ${response.data.Plot}`);//* Plot of the movie.
             console.log(`Actors: ${response.data.Actors}`);//* Actors in the movie.
             console.log("------------------------------");
