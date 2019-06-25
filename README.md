@@ -11,8 +11,10 @@ Because screenshots (and well-written READMEs) are extremely important in the co
 If you haven't written a markdown file yet, click here for a rundown, or just take a look at the raw file of these instructions.
 
 
+The current problem with devices, like SIRI, is that you cannot give SIRI commands in text. LIRI solves this problem. 
+LIRI is a *Language Interpretation and Recognition Interface*.  LIRI can give you search results based on a written command. LIRI can search spotify songs, search events that an artist is performing at, search for a movie, and finally answering commands in a text file. 
 
-Ever wish you could type to siri? Well now you can with LIRI. LIRI is a *Language Interpretation and Recognition Interface*. What LIRI can do is give you search results based on a command. LIRI can search spotify songs, search events that an artist is performing at, search for a movie, and finally answering commands in a text file. 
+LIRI was written with `javascript`, `node.js`, `axios`, `node-spotify-api`, `moment.js`
 
 
 I think you should use an
