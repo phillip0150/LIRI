@@ -39,6 +39,7 @@ Once you enter a search, you are presented with a list. The list will contain a 
 
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/3.png?raw=true)
 
+
 ### Searching a concert
 
 To search a concert, type `concert-this` with a artist. For example:
@@ -48,3 +49,36 @@ To search a concert, type `concert-this` with a artist. For example:
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/4.png?raw=true)
 
 Once you enter a search, you are presented with a list. The list will contain the `Artist`, `Venue Name`, `Venue Location`, and the `Date of Event`.
+
+### Searching a movie
+
+To search a movie, type `movie-this` with a movie name. For example:
+```bash
+  node liri.js concert-this Fight Club
+```
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/5.png?raw=true)
+
+From there, you are presented with a list. The list will contain the `Title`, `Release date`, `IMDB Rating`, `Rotten Tomatoe Rating`, `Country where it was produced`, `Movie language`, `The plot`, and the `Actors`.
+
+### Searching with a file
+
+To search with a file, type `do-what-it-says`. You need to make sure that you have a text file named `random.txt` in the folder where LIRI lives. In `random.txt` the text format needs to be `<command>,<input>`. For example:
+```text
+  spotify-this-song,Killing in the Name of
+```
+
+Once your text file is in the correct format, type:
+
+```bash
+  node liri.js do-what-it-says
+```
+
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/6.png?raw=true)
+
+From there, you are presented with the results. You can have multiple searches in the the text file. 
+```text
+  spotify-this-song,Killing in the Name of,movie-this,Forrest Gump
+```
+
+
+### Error handling
