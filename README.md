@@ -17,3 +17,11 @@ Ever wish you could type to siri? Well now you can with LIRI. LIRI is a *Languag
 
 I think you should use an
 `<addr>` element here instead.
+
+```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```
