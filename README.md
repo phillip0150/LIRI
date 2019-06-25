@@ -17,6 +17,7 @@ LIRI is a *Language Interpretation and Recognition Interface*.  LIRI can give yo
 LIRI was written with `javascript`, `node.js`, `axios`, `node-spotify-api`, `moment.js`.
 
 ## How to use
+[App in action](https://drive.google.com/file/d/1fU0dCr0G2C1ELdFc5IGHCohnhX6IQ9sO/view)
 
 To run the program, you need to open your computer's terminal and enter the follow command:
 
