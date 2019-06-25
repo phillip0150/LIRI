@@ -37,10 +37,10 @@ function concert(artist){
 
 
 // Then run a request with axios to the OMDB API with the movie specified
-    var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+    var queryUrl = "https://rest.bandsintown.com/artists/" + artist.trim() + "/events?app_id=codingbootcamp";
     axios.get(queryUrl).then(
         function(response) {
-        
+            console.log(artist.trim());
             for (var i =0; i< response.data.length; i++)
             {
                 console.log("------------------------------");
@@ -127,19 +127,21 @@ function doWhat(){
         var dataArr = data.split(",");
       
         // We will then re-display the content as an array for later use.
-        switch(dataArr[0]){
-            case "spotify-this-song":
-                spotifySearch(dataArr[1]);
-                break;
-            case "concert-this":
-                concert(dataArr[1]);
-                break;
-            case "movie-this":
-                movie(dataArr[1]);
-                break;
-            default:
-                console.log("Sorry, file is corrupt. Please make sure file has a format of [command],[argument].")
+        for (var i =0; i<dataArr.length-1; i++){
+            switch(dataArr[i]){
+                case "spotify-this-song":
+                    spotifySearch(dataArr[i+1]);
+                    break;
+                case "concert-this":
+                    concert(dataArr[i+1]);
+                    break;
+                case "movie-this":
+                    movie(dataArr[i+1]);
+                    break;
+                // default:
+                //     console.log("Sorry, file is corrupt. Please make sure file has a format of [command],[argument].")
 
+            }
         }
       
       });
