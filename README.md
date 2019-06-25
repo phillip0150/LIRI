@@ -25,5 +25,15 @@ To run the program, you need to open your terminal and enter the follow command:
 ```
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/1.png?raw=true)
 
-From there you are presented with a list of commands that the program can do
+From there you are presented with a list of commands that the program can do.
+
+### Searching a song
+
+To search a song, type `spotify-this-song` with a song name. For example:
+```bash
+  node liri.js spotify-this-song Wake Up in The Sky
+```
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/2.png?raw=true)
+
+From there you are presented with a list that matches the search. The list will contain a `Artist`, `Song name`, `Link`, and a `Album`.
 
