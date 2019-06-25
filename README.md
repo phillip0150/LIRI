@@ -35,5 +35,8 @@ To search a song, type `spotify-this-song` with a song name. For example:
 ```
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/2.png?raw=true)
 
-From there you are presented with a list that matches the search. The list will contain a `Artist`, `Song name`, `Link`, and a `Album`.
+From there you are presented with a list that matches the search. The list will contain a `Artist`, `Song name`, `Link`, and a `Album`. Hovering over `Link` and using the following shortcut `cmd + mouse click`, will take you to spotify song page.
 
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/3.png?raw=true)
+
+### Searching a concert
