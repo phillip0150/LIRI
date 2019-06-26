@@ -8,6 +8,7 @@ LIRI is a *Language Interpretation and Recognition Interface*.  LIRI can give yo
 ## Technologies
 
 LIRI was written with `javascript`, `node.js`, `axios`, `node-spotify-api`, `moment.js`.
+
 API used are `spotify`, `bandsintown`, and `omdb`.
 
 ## How to use
