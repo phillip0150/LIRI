@@ -1,26 +1,33 @@
 //At the top of the liri.js file, add code to read and set any environment variables with the dotenv package:
 require("dotenv").config();
-//Add the code required to import the keys.js file and store it in a variable.
+//Adding keys, as well as npm packages
 var keys = require("./keys.js");
 var axios = require("axios");
 var Spotify = require("node-spotify-api");
 var moment = require("moment");
-//You should then be able to access your keys information like so
+//creating a new spofity 
 var spotify = new Spotify(keys.spotify);
+//Index 2 in the array is the command or the userInput (spotify-this-song, movie-this, etc.)
 var userInput = process.argv[2];
+//adding for filing reading
 var fs = require("fs");
 
+//Spotify Function
 function spotifySearch(song){
+    //if the user doesn't enter a song, we assign song as "The Sign"
     if (song === ""){
         song = "The Sign";
     }
+    //setting up the search
     spotify.search({ type: 'track', query: song }, function(err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
+        //if this is 0, we know that we coudln't find a song
         if(data.tracks.items.length === 0){
             console.log("Sorry, no results. Please search another song.");
         }
+        //for loop to display all the songs found
         for (var i = 0; i<  data.tracks.items.length; i++){
             console.log("-------------------------");
             console.log("Artist: " + data.tracks.items[i].artists[0].name);
@@ -32,24 +39,24 @@ function spotifySearch(song){
     });
 }
 
+//concert-this function
 function concert(artist){
-// This will search the Bands in Town Artist Events API ("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp") 
-// for an artist and render the following information about each event to the terminal:
-// Name of the venue
-// Venue location
-// Date of the Event (use moment to format this as "MM/DD/YYYY")
-
-
-// Then run a request with axios to the OMDB API with the movie specified
+    //if the artist is blank, user didn't enter anything
+    //set artist to "Lil Pump"
     if (artist === ""){
         artist = "Lil Pump";
     }
+    //setting the query
     var queryUrl = "https://rest.bandsintown.com/artists/" + artist.trim() + "/events?app_id=codingbootcamp";
+    //using axios to get repsonse
     axios.get(queryUrl).then(
         function(response) {
+            //if response lenght is 0, we know that the artist doesn't have a concert coming up
             if(response.data.length === 0){
                 return console.log("Sorry, no concert for " +artist.trim());
             }
+            //console.log the artist name
+            //then for loop to display all info
             console.log(artist.trim() + " concert list");
             for (var i =0; i< response.data.length; i++)
             {
@@ -83,7 +90,9 @@ function concert(artist){
     });
 }
 
+//movie-this function
 function movie(movieName) {
+    //if the user enters a blank movie, we set movie to Mr. Nobody
     if (movieName === ""){
         movieName = "Mr. Nobody";
     }
@@ -91,11 +100,12 @@ function movie(movieName) {
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
     
     axios.get(queryUrl).then(
-        
         function(response) {
+            //if response length is 0, we didn't get a result
             if(response.data.length === 0){
                 console.log("Sorry, no results. Please search another movie.");
             }
+            //displaying movie info
             console.log("------------------------------");
             console.log(`Title: ${response.data.Title}`);// * Title of the movie.
             console.log(`Released: ${response.data.Released}`);//* Year the movie came out.
@@ -162,6 +172,8 @@ function doWhat(){
       });
 }
 
+//switch case to see what the userInput is
+//then calling the correct function
 switch (userInput) {
     case "spotify-this-song":
         spotifySearch(process.argv.slice(3).join(" ")); 
