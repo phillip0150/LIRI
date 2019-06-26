@@ -1,7 +1,9 @@
-# LIRI [Link to app](https://github.com/phillip0150/LIRI)
+# LIRI
 
 The current problem with devices, like SIRI, is that you cannot give SIRI commands in text. LIRI solves this problem. 
-LIRI is a *Language Interpretation and Recognition Interface*.  LIRI can give you search results based on a written command. LIRI can search spotify songs, search events that an artist is performing at, search for a movie, and finally answering commands in a text file. 
+LIRI is a *Language Interpretation and Recognition Interface*.  LIRI can give you search results based on a written command. LIRI can search spotify songs, search events that an artist is performing at, search for a movie, and finally answering commands in a text file.
+
+[Link to app](https://github.com/phillip0150/LIRI)
 
 ## Technologies
 
