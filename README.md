@@ -1,11 +1,17 @@
-# LIRI
+# LIRI [Link to app](https://github.com/phillip0150/LIRI)
+
 The current problem with devices, like SIRI, is that you cannot give SIRI commands in text. LIRI solves this problem. 
 LIRI is a *Language Interpretation and Recognition Interface*.  LIRI can give you search results based on a written command. LIRI can search spotify songs, search events that an artist is performing at, search for a movie, and finally answering commands in a text file. 
+
+## Technologies
 
 LIRI was written with `javascript`, `node.js`, `axios`, `node-spotify-api`, `moment.js`.
 
 ## How to use
+
 [App in action](https://drive.google.com/file/d/1fU0dCr0G2C1ELdFc5IGHCohnhX6IQ9sO/view)
+OR
+[App in Action](https://github.com/phillip0150/LIRI/blob/master/video/Jun%2025%2C%202019%206_34%20PM.webm)
 
 To run the program, you need to open your computer's terminal and enter the follow command:
 
@@ -130,132 +136,140 @@ If the program cannot find a concert, it will display a message
 
 #### Spotify Function
 ```javascript
+    //Spotify Function
     function spotifySearch(song){
-        if (song === ""){
-            song = "The Sign";
-        }
-        spotify.search({ type: 'track', query: song }, function(err, data) {
-            if (err) {
-                return console.log('Error occurred: ' + err);
-            }
-            if(data.tracks.items.length === 0){
-                console.log("Sorry, no results. Please search another song.");
-            }
-            for (var i = 0; i<  data.tracks.items.length; i++){
-                console.log("-------------------------");
-                console.log("Artist: " + data.tracks.items[i].artists[0].name);
-                console.log("Song name: " + data.tracks.items[i].name);
-                console.log("Link: " + data.tracks.items[i].external_urls.spotify);
-                console.log("Album: " + data.tracks.items[i].album.name);
-                console.log("-------------------------");
-            } 
-        });
+    //if the user doesn't enter a song, we assign song as "The Sign"
+    if (song === ""){
+        song = "The Sign";
     }
+    //setting up the search
+    spotify.search({ type: 'track', query: song }, function(err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        //if this is 0, we know that we coudln't find a song
+        if(data.tracks.items.length === 0){
+            console.log("Sorry, no results. Please search another song.");
+        }
+        //for loop to display all the songs found
+        for (var i = 0; i<  data.tracks.items.length; i++){
+            console.log("-------------------------");
+            console.log("Artist: " + data.tracks.items[i].artists[0].name);
+            console.log("Song name: " + data.tracks.items[i].name);
+            console.log("Link: " + data.tracks.items[i].external_urls.spotify);
+            console.log("Album: " + data.tracks.items[i].album.name);
+            console.log("-------------------------");
+        } 
+    });
+}
 ```
 
 #### Movie Function
 
 ```javascript
+    //movie-this function
     function movie(movieName) {
-    if (movieName === ""){
-        movieName = "Mr. Nobody";
+        //if the user enters a blank movie, we set movie to Mr. Nobody
+        if (movieName === ""){
+            movieName = "Mr. Nobody";
+        }
+        // Then run a request with axios to the OMDB API with the movie specified
+        var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+
+        axios.get(queryUrl).then(
+            function(response) {
+                //if response length is 0, we didn't get a result
+                if(response.data.length === 0){
+                    console.log("Sorry, no results. Please search another movie.");
+                }
+                //displaying movie info
+                console.log("------------------------------");
+                console.log(`Title: ${response.data.Title}`);// * Title of the movie.
+                console.log(`Released: ${response.data.Released}`);//* Year the movie came out.
+                console.log(`IMDB Rating: ${response.data.imdbRating}`);//* IMDB Rating of the movie.
+                console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);//* Rotten Tomatoes Rating of the movie.
+                console.log(`Country where it was produced: ${response.data.Country}`);//* Country where the movie was produced.
+                console.log(`Movie language: ${response.data.Language}`);//* Language of the movie.
+                console.log(`Plot: ${response.data.Plot}`);//* Plot of the movie.
+                console.log(`Actors: ${response.data.Actors}`);//* Actors in the movie.
+                console.log("------------------------------");
+            })
+            .catch(function(error) {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log("---------------Data---------------");
+                    console.log(error.response.data);
+                    console.log("---------------Status---------------");
+                    console.log(error.response.status);
+                    console.log("---------------Status---------------");
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an object that comes back with details pertaining to the error that occurred.
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log("Error", error.message);
+                }
+                console.log(error.config);
+        });
     }
-    // Then run a request with axios to the OMDB API with the movie specified
-    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-    
-    axios.get(queryUrl).then(
-        
-        function(response) {
-            if(response.data.length === 0){
-                console.log("Sorry, no results. Please search another movie.");
-            }
-            console.log("------------------------------");
-            console.log(`Title: ${response.data.Title}`);// * Title of the movie.
-            console.log(`Released: ${response.data.Released}`);//* Year the movie came out.
-            console.log(`IMDB Rating: ${response.data.imdbRating}`);//* IMDB Rating of the movie.
-            console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);//* Rotten Tomatoes Rating of the movie.
-            console.log(`Country where it was produced: ${response.data.Country}`);//* Country where the movie was produced.
-            console.log(`Movie language: ${response.data.Language}`);//* Language of the movie.
-            console.log(`Plot: ${response.data.Plot}`);//* Plot of the movie.
-            console.log(`Actors: ${response.data.Actors}`);//* Actors in the movie.
-            console.log("------------------------------");
-        })
-        .catch(function(error) {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                console.log("---------------Data---------------");
-                console.log(error.response.data);
-                console.log("---------------Status---------------");
-                console.log(error.response.status);
-                console.log("---------------Status---------------");
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                // `error.request` is an object that comes back with details pertaining to the error that occurred.
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log("Error", error.message);
-            }
-            console.log(error.config);
-    });
-}
 ```
 
 #### Concert Function
 
 ```javascript
+    //concert-this function
     function concert(artist){
-    // This will search the Bands in Town Artist Events API ("https://rest.bandsintown.com/artists/" + artist + "/events?     app_id=codingbootcamp") 
-    // for an artist and render the following information about each event to the terminal:
-    // Name of the venue
-    // Venue location
-    // Date of the Event (use moment to format this as "MM/DD/YYYY")
-
-
-    // Then run a request with axios to the OMDB API with the movie specified
-    if (artist === ""){
-        artist = "Lil Pump";
-    }
-    var queryUrl = "https://rest.bandsintown.com/artists/" + artist.trim() + "/events?app_id=codingbootcamp";
-    axios.get(queryUrl).then(
-        function(response) {
-            if(response.data.length === 0){
-                return console.log("Sorry, no concert for " +artist.trim());
-            }
-            console.log(artist.trim() + " concert list");
-            for (var i =0; i< response.data.length; i++)
-            {
-                console.log("------------------------------");
-                console.log(`Artist: ${artist}`);
-                console.log(`Venue Name: ${response.data[i].venue.name}`);
-                console.log(`Venue Location: ${response.data[i].venue.city}, ${response.data[i].venue.country}`);
-                console.log(`Date of Event: ${moment(response.data[i].datetime).format("L")}`);
-                console.log("------------------------------");
-            } 
-        })
-    .catch(function(error) {
-        if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log("---------------Data---------------");
-            console.log(error.response.data);
-            console.log("---------------Status---------------");
-            console.log(error.response.status);
-            console.log("---------------Status---------------");
-            console.log(error.response.headers);
-        } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an object that comes back with details pertaining to the error that occurred.
-            console.log(error.request);
-        } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log("Error", error.message);
-        }
-        console.log(error.config);
-    });
-}
+      //if the artist is blank, user didn't enter anything
+      //set artist to "Lil Pump"
+      if (artist === ""){
+          artist = "Lil Pump";
+      }
+      //setting the query
+      var queryUrl = "https://rest.bandsintown.com/artists/" + artist.trim() + "/events?app_id=codingbootcamp";
+      //using axios to get repsonse
+      axios.get(queryUrl).then(
+          function(response) {
+              //if response lenght is 0, we know that the artist doesn't have a concert coming up
+              if(response.data.length === 0){
+                  return console.log("Sorry, no concert for " +artist.trim());
+              }
+              //console.log the artist name
+              //then for loop to display all info
+              console.log(artist.trim() + " concert list");
+              for (var i =0; i< response.data.length; i++)
+              {
+                  console.log("------------------------------");
+                  console.log(`Artist: ${artist}`);
+                  console.log(`Venue Name: ${response.data[i].venue.name}`);
+                  console.log(`Venue Location: ${response.data[i].venue.city}, ${response.data[i].venue.country}`);
+                  console.log(`Date of Event: ${moment(response.data[i].datetime).format("L")}`);
+                  console.log("------------------------------");
+              } 
+          })
+      .catch(function(error) {
+          if (error.response) {
+              // The request was made and the server responded with a status code
+              // that falls out of the range of 2xx
+              console.log("---------------Data---------------");
+              console.log(error.response.data);
+              console.log("---------------Status---------------");
+              console.log(error.response.status);
+              console.log("---------------Status---------------");
+              console.log(error.response.headers);
+          } else if (error.request) {
+              // The request was made but no response was received
+              // `error.request` is an object that comes back with details pertaining to the error that occurred.
+              console.log(error.request);
+          } else {
+              // Something happened in setting up the request that triggered an Error
+              console.log("Error", error.message);
+          }
+          console.log(error.config);
+      });
+  }
 ```
 
 #### Do What It Says Function
@@ -295,6 +309,33 @@ function doWhat(){
       
       });
 }
+```
+
+### Switch Statment
+
+I used a swtich statment to call the correct function based on the command the user entered
+
+``` javascript
+    //switch case to see what the userInput is
+    //then calling the correct function
+    switch (userInput) {
+        case "spotify-this-song":
+            spotifySearch(process.argv.slice(3).join(" ")); 
+            break;
+        case "concert-this":
+            concert(process.argv.slice(3).join(" "));
+            break;
+        case "movie-this":
+            movie(process.argv.slice(3).join(" "));
+            break;
+        case "do-what-it-says":
+            doWhat();
+            break;
+        default:
+            console.log("-------------------------");
+            console.log("Please use spotify-this-song <input>, to search a song\nPlease use concert-this <input>, to search a concert\nPlease use moive-this <input>, to search a movie\nPlease use do-what-it-says to use a text file to search for you.")
+            console.log("-------------------------");
+    }
 ```
 
 ## My role
