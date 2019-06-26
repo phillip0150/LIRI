@@ -12,9 +12,9 @@ API used are `spotify`, `bandsintown`, and `omdb`.
 
 ## How to use
 
-[Video of app in action(google drive link)](https://drive.google.com/file/d/1fU0dCr0G2C1ELdFc5IGHCohnhX6IQ9sO/view)
+[Video of app in action (google drive link)](https://drive.google.com/file/d/1fU0dCr0G2C1ELdFc5IGHCohnhX6IQ9sO/view)
 OR
-[Video of app in action(github download)](https://github.com/phillip0150/LIRI/blob/master/video/Jun%2025%2C%202019%206_34%20PM.webm)
+[Video of app in action (github download)](https://github.com/phillip0150/LIRI/blob/master/video/Jun%2025%2C%202019%206_34%20PM.webm)
 
 To run the program, you need to open your computer's terminal and enter the follow command:
 
