@@ -53,7 +53,7 @@ Once you enter a search, you are presented with a list. The list will contain th
 
 To search a movie, type `movie-this` with a movie name. For example:
 ```bash
-  node liri.js concert-this Fight Club
+  node liri.js movie-this Fight Club
 ```
 ![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/5.png?raw=true)
 
