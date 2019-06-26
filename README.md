@@ -19,8 +19,13 @@ API used are `spotify`, `bandsintown`, and `omdb`.
 OR
 [Video of app in action (github download)](https://github.com/phillip0150/LIRI/blob/master/video/Jun%2025%2C%202019%206_34%20PM.webm)
 
-You will need to install axios, node-spotify-api, and moment packages
+You will need to install axios, node-spotify-api, and moment packages in the same folder as your program.
 
+```bash
+  npm install axios
+  npm install node-spotify-api
+  npm install moment
+```
 
 To run the program, you need to open your computer's terminal and enter the follow command:
 
