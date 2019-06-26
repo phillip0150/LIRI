@@ -90,7 +90,7 @@ If the user doesn't enter a song name, the program defaults to "The Sign"
   node liri.js spotify-this-song
 ```
 
-![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/6.png?raw=true)
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/7.png?raw=true)
 
 If the program cannot find a song, it will display a message
 
@@ -124,7 +124,7 @@ If the user doesn't enter a movie, the program defaults to "Mr. Nobody"
   node liri.js movie-this
 ```
 
-![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/8.png?raw=true)
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/9.png?raw=true)
 
 If the program cannot find a concert, it will display a message
 
