@@ -1,6 +1,6 @@
 # LIRI
 In order to meet the Employer Competitive standards and be ready to show your application to employers, the README.md file should meet the following criteria:
-Clearly state the problem the app is trying to solve (i.e. what is it doing and why)
+-Clearly state the problem the app is trying to solve (i.e. what is it doing and why)
 Give a high-level overview of how the app is organized
 Give start-to-finish instructions on how to run the app
 Include screenshots, gifs or videos of the app functioning
@@ -83,3 +83,42 @@ From there, you are presented with the results. You can have multiple searches i
 
 
 ### Error handling
+
+#### Searching a song
+
+If the user doesn't enter a song name, the program defaults to "The Sign"
+
+```bash
+  node liri.js spotify-this-song
+```
+
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/6.png?raw=true)
+
+If the program cannot find a song, it will display a message
+
+```bash
+  node liri.js spotify-this-song fjkdls;ajfkdls;a
+  Sorry, no results. Please search another song.
+```
+
+#### Searching a concert
+
+If the user doesn't enter a artist, the program defaults to "Lil Pump"
+
+```bash
+  node liri.js concert-this
+```
+
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/8.png?raw=true)
+
+If the program cannot find a concert, it will display a message
+
+```bash
+  node liri.js concer-this Taylor Swift
+  Sorry, no concert for Taylor Swift
+```
+
+
+## Organization
+
+
