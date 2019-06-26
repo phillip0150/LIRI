@@ -18,6 +18,9 @@ function spotifySearch(song){
         if (err) {
             return console.log('Error occurred: ' + err);
         }
+        if(data.tracks.items.length === 0){
+            console.log("Sorry, no results. Please search another song.");
+        }
         for (var i = 0; i<  data.tracks.items.length; i++){
             console.log("-------------------------");
             console.log("Artist: " + data.tracks.items[i].artists[0].name);
@@ -38,9 +41,15 @@ function concert(artist){
 
 
 // Then run a request with axios to the OMDB API with the movie specified
+    if (artist === ""){
+        artist = "Lil Pump";
+    }
     var queryUrl = "https://rest.bandsintown.com/artists/" + artist.trim() + "/events?app_id=codingbootcamp";
     axios.get(queryUrl).then(
         function(response) {
+            if(response.data.length === 0){
+                return console.log("Sorry, no concert for " +artist.trim());
+            }
             console.log(artist.trim() + " concert list");
             for (var i =0; i< response.data.length; i++)
             {
@@ -82,7 +91,11 @@ function movie(movieName) {
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
     
     axios.get(queryUrl).then(
+        
         function(response) {
+            if(response.data.length === 0){
+                console.log("Sorry, no results. Please search another movie.");
+            }
             console.log("------------------------------");
             console.log(`Title: ${response.data.Title}`);// * Title of the movie.
             console.log(`Released: ${response.data.Released}`);//* Year the movie came out.
@@ -126,6 +139,7 @@ function doWhat(){
       
         // Then split it by commas (to make it more readable)
         var dataArr = data.split(",");
+        
       
         // We will then re-display the content as an array for later use.
         for (var i =0; i<dataArr.length-1; i++){

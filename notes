@@ -1,0 +1,12 @@
+1. First I am going to run node liri.js to show what the program will display if the user doesn't enter anything in.
+
+2. Next I will search for a song, by using node liri.js spotify-this. I will search for 3 songs. 
+I will also show what happens if a user doesn't enter a song (default to "The Sign" by Ace of Base).
+
+3. Next I will search for a concert, by using node liri.js concert-this. I will search for 3 concerts. 
+I will also show what happens if a user doesn't enter a artist (default to Lil Pump).
+
+4. Next I will search for a movie, by using node liri.js movie-this. I will search for 3 movies.
+I will also show what happens if a user doesn't enter a movie (default to Mr. Nobody).
+
+5. Laslty I will search using a text file, by using node liri.js do-what-it-says. I will edit the text file to show it can take multiple entries. 
