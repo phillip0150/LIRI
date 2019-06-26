@@ -96,7 +96,7 @@ If the user doesn't enter a song name, the program defaults to "The Sign"
 
 If the program cannot find a song, it will display a message
 
-```bash
+```text
   node liri.js spotify-this-song fjkdls;ajfkdls;a
   Sorry, no results. Please search another song.
 ```
@@ -113,12 +113,55 @@ If the user doesn't enter a artist, the program defaults to "Lil Pump"
 
 If the program cannot find a concert, it will display a message
 
-```bash
-  node liri.js concer-this Taylor Swift
+```text
+  node liri.js concert-this Taylor Swift
   Sorry, no concert for Taylor Swift
+```
+
+#### Searching a movie
+
+If the user doesn't enter a movie, the program defaults to "Mr. Nobody"
+
+```bash
+  node liri.js movie-this
+```
+
+![screenShot](https://github.com/phillip0150/LIRI/blob/master/images/8.png?raw=true)
+
+If the program cannot find a concert, it will display a message
+
+```text
+  node liri.js movie-this fjdklsafjdsa
+  Sorry, no results. Please search another movie.
 ```
 
 
 ## Organization
+
+### Functions
+
+```javascript
+    function spotifySearch(song){
+        if (song === ""){
+            song = "The Sign";
+        }
+        spotify.search({ type: 'track', query: song }, function(err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            }
+            if(data.tracks.items.length === 0){
+                console.log("Sorry, no results. Please search another song.");
+            }
+            for (var i = 0; i<  data.tracks.items.length; i++){
+                console.log("-------------------------");
+                console.log("Artist: " + data.tracks.items[i].artists[0].name);
+                console.log("Song name: " + data.tracks.items[i].name);
+                console.log("Link: " + data.tracks.items[i].external_urls.spotify);
+                console.log("Album: " + data.tracks.items[i].album.name);
+                console.log("-------------------------");
+            } 
+        });
+    }
+```
 
 
