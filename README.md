@@ -297,4 +297,6 @@ function doWhat(){
 }
 ```
 
+## My role
+Application developer
 
